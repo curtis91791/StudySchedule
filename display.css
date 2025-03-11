@@ -3,13 +3,44 @@
     margin: 0;
 }
 header{
-    display: flex;
     background-color: #8f9ca0;
     padding: 3vh;
+}
+p{
+    font-size: 5vh;
+    font-weight: bold;
+}
+.setting{
+    padding: 0;
+    right: 2vw;
+    position: absolute;
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: transparent;
+    cursor: pointer;
+}
+.setting:hover {
+    background-color: #6a757b;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+/* 按下時的按壓效果 */
+.setting:active {
+    background-color: #5e676c;
+    transform: scale(0.95); /* 按下時讓按鈕稍微縮小 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+span{
+    font-size: 3vh;
+    font-weight: bold;
+    color: white;
+}
+body{
+    padding: 0vw ;
+}
+div{
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    font-weight: bold;
 }
 .sel{
     display: flex;
@@ -59,6 +90,7 @@ td{
 }
 select{
     padding: 5vh;
+    cursor: pointer;
 }
 input{
     padding: 5px;
@@ -68,11 +100,48 @@ input{
     border: none;
     margin-right: 10px;
 }
-button{
+.add{
     padding: 5px 20px;    
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
     background-color: #78858a;
     color: white;
+    cursor: pointer;
+}
+
+
+
+.popup {
+    display: none; /* 預設隱藏 */
+    position: absolute;
+    top: 8vh;
+    right: 8vh;
+    width: 15vw;
+    height: 10vh;
+}
+
+/* 彈出視窗內容 */
+.popup-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90% ;
+    height: 80%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    font-size: 10%;
+}
+.clear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 80%;
+    height: 40%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
 }

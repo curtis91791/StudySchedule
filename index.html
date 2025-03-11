@@ -7,7 +7,19 @@
     <link rel="stylesheet" href="display.css">
 <head>
 <body>
-    <header>Your Class Schedule</header>
+    <header>
+        <div class="header1">
+            <p class="title">Your Class Schedule</p>
+            <button class="setting" name="setting" onclick="togglePopup()">
+                <span>⚙️</span>
+            </button>
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <button class="clear" onclick="clearData()">⚠️清除資料</button>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="table">
         <table class="tablein">
             <caption></caption>
@@ -57,7 +69,7 @@
             </select>
         </div>
         <div class="two">
-            <input type="text" name="input" class="time" placeholder=" 早安你好~">
+            <input type="text" name="input" class="time" placeholder=" 早安你好~" autocomplete="off">
         </div>
         <div class="three">
             <button class="add" name="add">新增</button>  
@@ -108,6 +120,28 @@
                 }
             });
         });
+
+        function togglePopup() {
+            let popup = document.getElementById("popup");
+
+            // 切換 display 屬性
+            if (popup.style.display === "flex") {
+                popup.style.display = "none"; // 如果已開啟則關閉
+            } else {
+                popup.style.display = "flex"; // 如果已關閉則開啟
+            }
+        }
+
+        // 關閉視窗
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        //data clear
+        function clearData() {
+            localStorage.clear();
+            location.reload();
+        }
     </script>
         
 </body>
