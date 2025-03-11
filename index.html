@@ -6,7 +6,7 @@
     <title>Study Schedule</title>
     <link rel="stylesheet" href="display.css">
 <head>
-<body>
+<body class="body">
     <header>
         <div class="header1">
             <p class="title">Your Class Schedule</p>
@@ -60,12 +60,12 @@
     <section class="list" name="list">
         <div class="one">
             <select class="sel" name="sel">
-                <option value="計組&計結">計組&計結</option>
-                <option value="演算法">演算法</option>
-                <option value="作業系統">作業系統</option>
-                <option value="資料結構">資料結構</option>
-                <option value="離散數學">離散數學</option>
-                <option value="線性代數">線性代數</option>
+                <option value="計組&計結" class="op">計組&計結</option>
+                <option value="演算法" class="op">演算法</option>
+                <option value="作業系統" class="op">作業系統</option>
+                <option value="資料結構" class="op">資料結構</option>
+                <option value="離散數學" class="op">離散數學</option>
+                <option value="線性代數" class="op">線性代數</option>
             </select>
         </div>
         <div class="two">
@@ -118,6 +118,7 @@
                 if (!updated) {
                     alert("找不到對應的科目！");
                 }
+                inputElement.value = ""; // 清空輸入框
             });
         });
 
