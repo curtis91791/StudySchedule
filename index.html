@@ -15,6 +15,30 @@
             </button>
             <div id="popup" class="popup">
                 <div class="popup-content">
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
+                    <div class="text1">
+                        <input type="text" value="" class="setinput" autocomplete="off">
+                        <input type="submit" value="✔️" class="search">
+                    </div>
                     <button class="clear" onclick="clearData()">⚠️清除資料</button>
                 </div>
             </div>
@@ -77,13 +101,12 @@
 
     </section>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+                document.addEventListener("DOMContentLoaded", function () {
             const selectElement = document.querySelector(".sel");
             const inputElement = document.querySelector(".time");
             const buttonElement = document.querySelector(".add");
             const tableRows = document.querySelectorAll(".tablein tbody tr");
         
-            // **載入 LocalStorage 資料**
             function loadSavedData() {
                 tableRows.forEach(row => {
                     const subject = row.children[0].innerText;
@@ -93,9 +116,8 @@
                     }
                 });
             }
-            loadSavedData(); // 初始化時載入
+            loadSavedData();
         
-            // **按鈕點擊事件**
             buttonElement.addEventListener("click", function () {
                 const selectedSubject = selectElement.value;
                 const inputTime = inputElement.value.trim();
@@ -110,7 +132,7 @@
                     const subject = row.children[0].innerText;
                     if (subject === selectedSubject) {
                         row.children[1].innerText = inputTime;
-                        localStorage.setItem(subject, inputTime); // **存入 localStorage**
+                        localStorage.setItem(subject, inputTime); 
                         updated = true;
                     }
                 });
@@ -118,27 +140,57 @@
                 if (!updated) {
                     alert("找不到對應的科目！");
                 }
-                inputElement.value = ""; // 清空輸入框
+                inputElement.value = ""; 
             });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+            const subjectInputs = document.querySelectorAll(".setinput"); 
+            const submitButtons = document.querySelectorAll(".search");  
+            const tableRows = document.querySelectorAll(".tablein tbody tr");
+            const selectElement = document.querySelector(".sel");
 
+            function loadSubjects() {
+                selectElement.innerHTML = ""; 
+
+                tableRows.forEach((row, index) => {
+                    const savedSubject = localStorage.getItem(`subject_${index}`) || row.children[0].innerText;
+                    row.children[0].innerText = savedSubject;
+                    if (subjectInputs[index]) {
+                        subjectInputs[index].value = savedSubject;
+                    }
+
+                    const option = document.createElement("option");
+                    option.value = savedSubject;
+                    option.textContent = savedSubject;
+                    selectElement.appendChild(option);
+                });
+            }
+            loadSubjects();
+
+            submitButtons.forEach((button, index) => {
+                button.addEventListener("click", function () {
+                    const newSubject = subjectInputs[index]?.value.trim(); 
+                    if (tableRows[index]) {
+                        tableRows[index].children[0].innerText = newSubject;
+                    }
+
+                    localStorage.setItem(`subject_${index}`, newSubject);
+
+                    loadSubjects();
+                });
+            });
+
+        });
         function togglePopup() {
-            let popup = document.getElementById("popup");
+                let popup = document.getElementById("popup");
 
-            // 切換 display 屬性
             if (popup.style.display === "flex") {
-                popup.style.display = "none"; // 如果已開啟則關閉
+                popup.style.display = "none"; 
             } else {
-                popup.style.display = "flex"; // 如果已關閉則開啟
+                popup.style.display = "flex"; 
             }
         }
 
-        // 關閉視窗
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-
-        //data clear
         function clearData() {
             localStorage.clear();
             location.reload();
