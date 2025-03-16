@@ -112,6 +112,7 @@ select{
 .add{
     padding: 5px 20px;    
     border-radius: 10px;
+    border-width: 4px;
     font-size: 17px;
     font-weight: bold;
     background-color: #78858a;
@@ -271,7 +272,7 @@ select{
         top: 7vh;
         right: 5vh;
         width: 50vw;
-        height:62vh;
+        height:54vh;
     }
     .popup-content {
         font-size: 12px;
